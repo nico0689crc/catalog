@@ -1,0 +1,10 @@
+.logo__link {
+  display: inline-flex;
+}
+.logo__container {
+  width: 10em;
+}
+
+.logo__img {
+  width: 100%;
+}
