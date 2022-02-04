@@ -19,6 +19,7 @@
   align-items: center;
   height: 100%;
   padding: 0 0.5em;
+  color: rgba(var(--text-base-dark), 1);
 }
 
 .button .button__icon.loading svg {
@@ -49,10 +50,14 @@
 }
 
 .button--primary {
-  color: rgb(255, 255, 255);
   outline: none;
   border: none;
   background-color: rgba(var(--color-accent), 1);
+}
+
+.button--primary .button__text,
+.button--primary .button__icon {
+  color: rgba(var(--color-light), 1);
 }
 
 .button--primary:hover {

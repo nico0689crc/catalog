@@ -7,7 +7,7 @@ import { Code } from "react-content-loader";
 
 const Categories = () => {
   const { data, error, isLoading } = useCategoryQuery();
-  let [searchParams, setSearchParams] = useSearchParams();
+  let searchParams = useSearchParams()[0];
 
   if (error) {
     return <h1>{error.message}</h1>;
@@ -20,12 +20,11 @@ const Categories = () => {
       </div>
     );
   }
-
   return (
     <div className="categories-container">
-      {data?.data?.length > 0 ? (
+      {data?.length > 0 ? (
         <ul className="categories__items">
-          {data.data.map((item, index) => (
+          {data.map((item, index) => (
             <li
               className={`categories__item ${
                 searchParams.get("category") === item.attributes.slug

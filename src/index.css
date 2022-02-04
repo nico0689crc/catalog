@@ -13,6 +13,13 @@
   --color-gray-200: 229, 231, 235;
 
   --color-border-200: 229, 231, 235;
+  --tw-ring-offset-shadow: 0 0 #0000;
+  --tw-ring-shadow: 0 0 #0000;
+  --tw-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+}
+
+html {
+  font-size: 0.8rem;
 }
 
 body {
@@ -20,14 +27,26 @@ body {
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
     "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
     sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
 }
+
 ul {
   padding: 0;
 }
 
 h1,
+h3,
 ul {
   margin: 0;
+}
+
+@media (min-width: 1024px) {
+  html {
+    font-size: 0.9rem;
+  }
+}
+
+@media (min-width: 1280px) {
+  html {
+    font-size: 1rem;
+  }
 }

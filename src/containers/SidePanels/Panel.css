@@ -54,7 +54,7 @@
   align-items: center;
   flex-grow: 0;
   width: 100%;
-  padding: 1.5em;
+  height: 3.75em;
   border-bottom: 1px solid rgba(var(--color-border-200), 0.75);
 }
 
@@ -76,7 +76,7 @@
 }
 
 .header__button-close svg {
-  color: rgba(var(--text-base), 1);
+  color: rgba(var(--text-base-dark), 1);
   font-size: 0.8rem;
 }
 
@@ -84,10 +84,20 @@
   color: rgba(var(--color-light), 1);
 }
 
-.header__left {
+.header__left,
+.header__right {
   display: flex;
-  grid-row: 1;
+  height: 100%;
+  align-items: center;
+}
+
+.header__left {
   justify-content: flex-start;
+  padding: 1.1em;
+}
+
+.header__right {
+  padding: 0 0.5em;
 }
 
 .panel__content {

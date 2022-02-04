@@ -2,7 +2,6 @@ import { useContext } from "react";
 import Categories from "../../components/Categories/Categories";
 import { SidePanelContext, VIEWS } from "../../contexts/SidePanels";
 import Panel from "./Panel";
-import "./SidePanels.css";
 
 const SidePanelsContainer = () => {
   const { state, displaySidePanelHandler } = useContext(SidePanelContext);

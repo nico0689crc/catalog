@@ -7,11 +7,6 @@
 .categories__items {
   list-style: none;
 }
-
-.categories__item {
-  padding: 0.5em 0;
-}
-
 .categories__item a {
   display: inline-flex;
   align-items: center;

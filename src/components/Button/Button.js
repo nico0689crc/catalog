@@ -122,6 +122,7 @@ const getSettings = props => {
  * text
  * icon
  * onClick
+ * loadingText
  */
 
 const Button = props => {

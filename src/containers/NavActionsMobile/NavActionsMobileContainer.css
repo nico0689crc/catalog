@@ -5,12 +5,13 @@
   gap: 1em;
   padding: 0 var(--main-padding-sides);
   border-top: 1px solid rgba(var(--color-border-200), 1);
+  background-color: rgba(var(--color-light), 1);
+  z-index: 1;
 }
 
 .nav-actions-mobile__items {
   display: flex;
   justify-content: space-between;
-  padding: inherit;
   margin: 1em 0;
 }
 
@@ -25,6 +26,7 @@
 }
 
 .nav-actions-mobile__button svg {
+  color: rgba(var(--text-base-dark), 1);
   transition: all 0.2s ease-in;
 }
 

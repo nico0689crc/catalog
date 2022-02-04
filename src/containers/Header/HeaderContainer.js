@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { AppSettingsContext } from "../../contexts/AppSettings";
+import { AppSettingsContext, BREAK_POINTS } from "../../contexts/AppSettings";
 import { SidePanelContext, VIEWS } from "../../contexts/SidePanels";
 import { BiCustomize } from "react-icons/bi";
 import classNames from "classnames";
@@ -19,7 +19,6 @@ const HeaderContainer = () => {
   const {
     currentWidth,
     isMobileView,
-    breaksPoints,
     displayHeaderFixed,
     displaySearchInputMobile,
   } = useContext(AppSettingsContext);
@@ -36,7 +35,10 @@ const HeaderContainer = () => {
 
   const classes = classNames(
     {
-      border: currentWidth < breaksPoints.tablet,
+      border:
+        currentWidth < BREAK_POINTS.tablet ||
+        (positionHeader === POSITIONS.FIXED &&
+          currentWidth >= BREAK_POINTS.tablet),
     },
     { "position-absolute": positionHeader === POSITIONS.ABSOLUTE },
     { "position-fixed": positionHeader === POSITIONS.FIXED }
@@ -44,9 +46,9 @@ const HeaderContainer = () => {
 
   const displaySearchInput =
     (positionHeader === POSITIONS.FIXED &&
-      currentWidth >= breaksPoints.mobile) ||
+      currentWidth >= BREAK_POINTS.mobile) ||
     (positionHeader === POSITIONS.FIXED &&
-      currentWidth < breaksPoints.mobile &&
+      currentWidth < BREAK_POINTS.mobile &&
       displaySearchInputMobile);
 
   return (

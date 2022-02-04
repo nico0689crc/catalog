@@ -1,13 +1,13 @@
 import { createContext, useEffect, useState } from "react";
 import useWindowSize from "react-use/lib/useWindowSize";
 
-const BREAK_POINTS = {
+export const BREAK_POINTS = {
   mobile: 1024,
   tablet: 1280,
 };
 
 const initialState = {
-  mobileBreakPoint: null,
+  breaksPoints: null,
   isMobileView: null,
   currentWidth: null,
   logo: {
@@ -41,7 +41,6 @@ export const AppSettingProvider = ({ children }) => {
   return (
     <AppSettingsContext.Provider
       value={{
-        breaksPoints: BREAK_POINTS,
         isMobileView: isMobileView,
         currentWidth: width,
         displayHeaderFixed,
