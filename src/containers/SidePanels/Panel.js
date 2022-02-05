@@ -17,6 +17,7 @@ import Logo from "../../components/Logo/Logo";
 
 const Panel = ({ children, open = false, variant = "right", onClose }) => {
   const ref = useRef();
+
   useEffect(() => {
     if (ref.current) {
       if (open) {
@@ -29,6 +30,7 @@ const Panel = ({ children, open = false, variant = "right", onClose }) => {
       clearAllBodyScrollLocks();
     };
   }, [open]);
+
   return (
     <Portal>
       <AnimatePresence>

@@ -1,22 +1,27 @@
 import { useCategoryQuery } from "../../hooks/queries/useCategoryQuery";
 import { useSearchParams, Link } from "react-router-dom";
-import CategoriesLoader from "../CategoriesLoader/CategoriesLoader";
 import IconTag from "../Icons/IconTag/IconTag";
+import Loader from "../Loader/Loader";
+import NotFound from "../NotFound/NotFound";
+import Error from "../Error/Error";
 import "./Categories.css";
-import { Code } from "react-content-loader";
 
 const Categories = () => {
   const { data, error, isLoading } = useCategoryQuery();
   let searchParams = useSearchParams()[0];
 
   if (error) {
-    return <h1>{error.message}</h1>;
+    return (
+      <div className="categories-container">
+        <Error message={error.message} />
+      </div>
+    );
   }
 
   if (isLoading) {
     return (
       <div className="categories-container">
-        <CategoriesLoader />
+        <Loader fill="#00a07f" width="100px" />
       </div>
     );
   }
@@ -43,7 +48,7 @@ const Categories = () => {
           ))}
         </ul>
       ) : (
-        <div>Not found</div>
+        <NotFound />
       )}
     </div>
   );

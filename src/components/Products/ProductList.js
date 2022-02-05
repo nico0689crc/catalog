@@ -2,8 +2,11 @@ import { useSearchParams } from "react-router-dom";
 import { Fragment } from "react";
 import { useProductsQuery } from "../../hooks/queries/useProductsQuery";
 import Button from "../Button/Button";
+import ProductItem from "./ProductItem";
+import Error from "../Error/Error";
+import Loader from "../Loader/Loader";
+import NotFound from "../NotFound/NotFound";
 import "./ProductList.css";
-import ProductToCartButton from "./ProductToCartButton";
 
 const ProductList = () => {
   let searchParams = useSearchParams()[0];
@@ -38,48 +41,51 @@ const ProductList = () => {
     fetchNextPage();
   };
 
+  if (error) {
+    return (
+      <div className="categories-container">
+        <Error message={error.message} />
+      </div>
+    );
+  }
+
+  if (isFetching && !data?.pages?.length) {
+    return (
+      <div className="categories-container">
+        <Loader fill="#00a07f" width="100px" />
+      </div>
+    );
+  }
+
   return (
     <div className="product-list__container">
-      <div className="product-list__items">
-        {data?.pages?.map((products, index) => (
-          <Fragment key={index}>
-            {products?.data?.map((product, index) => (
-              <article key={index} className="product-list__item">
-                <div className="product-item__image">
-                  <img src={product.attributes.images[0].thumbnail.url}></img>
-                </div>
-                <header className="product-item__info">
-                  <div className="product-item__prices">
-                    <span className="product-item__price">
-                      {product.attributes.price}
-                    </span>
-                    {product.attributes.sale_price && (
-                      <span className="product-item__sale-price">
-                        {product.attributes.sale_price}
-                      </span>
-                    )}
-                  </div>
-                  <h3 className="product-item__name">
-                    {product.attributes.name}
-                  </h3>
-                  <ProductToCartButton />
-                </header>
-              </article>
+      {data?.pages[0]?.data.length > 0 ? (
+        <>
+          <div className="product-list__items">
+            {data?.pages?.map((products, index) => (
+              <Fragment key={index}>
+                {products?.data?.map((product, index) => (
+                  <ProductItem key={index} product={product} />
+                ))}
+              </Fragment>
             ))}
-          </Fragment>
-        ))}
-      </div>
-      {hasNextPage && (
-        <div className="product-list__load-more">
-          <Button
-            onClick={loadMoreHandler}
-            type="primary"
-            text="Cargar mas"
-            shape="round"
-            loadingText="Cargando mas"
-            loading={isFetchingNextPage}
-          />
-        </div>
+          </div>
+
+          {hasNextPage && (
+            <div className="product-list__load-more">
+              <Button
+                onClick={loadMoreHandler}
+                type="primary"
+                text="Cargar mas"
+                shape="round"
+                loadingText="Cargando mas"
+                loading={isFetchingNextPage}
+              />
+            </div>
+          )}
+        </>
+      ) : (
+        <NotFound />
       )}
     </div>
   );

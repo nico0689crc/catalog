@@ -20,6 +20,7 @@
 
 .filter-bar {
   top: 4em;
+  height: 4em;
   padding-top: 0.75em;
   padding-bottom: 0.75em;
 }

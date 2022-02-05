@@ -1,6 +1,7 @@
 .products-categories__container {
   display: flex;
   position: relative;
+  top: 8em;
 }
 
 .products-categories__left-side {
@@ -19,4 +20,10 @@
   width: 100%;
   min-height: calc(100vh - 6.5em);
   flex-grow: 1;
+}
+
+@media (min-width: 1024px) {
+  .products-categories__container {
+    top: 0;
+  }
 }

@@ -12,10 +12,15 @@
   --color-gray-100: 243, 244, 246;
   --color-gray-200: 229, 231, 235;
 
+  --color-error-light: 229, 115, 115;
+  --color-error-main: 244, 67, 54;
+  --color-error-dark: 211, 47, 47;
+
   --color-border-200: 229, 231, 235;
   --tw-ring-offset-shadow: 0 0 #0000;
   --tw-ring-shadow: 0 0 #0000;
   --tw-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  --text-muted: 156, 163, 175;
 }
 
 html {

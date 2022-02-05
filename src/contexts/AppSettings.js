@@ -18,6 +18,7 @@ const initialState = {
   setDisplayHeaderFixed: () => {},
   displaySearchInputMobile: null,
   setDisplaySearchInputMobile: () => {},
+  currency: null,
 };
 
 export const AppSettingsContext = createContext(initialState);
@@ -28,6 +29,7 @@ export const AppSettingProvider = ({ children }) => {
   const [displaySearchInputMobile, setDisplaySearchInputMobile] =
     useState(false);
   const [isMobileView, setIsMobileView] = useState(width > BREAK_POINTS.mobile);
+  const [currency, setCurrency] = useState("USD");
 
   useEffect(() => {
     if (width > BREAK_POINTS.mobile) {
@@ -48,6 +50,7 @@ export const AppSettingProvider = ({ children }) => {
         displaySearchInputMobile,
         setDisplaySearchInputMobile,
         logo: initialState.logo,
+        currency: currency,
       }}
     >
       {children}
