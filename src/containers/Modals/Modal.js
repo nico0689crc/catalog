@@ -8,31 +8,18 @@ import {
   enableBodyScroll,
   clearAllBodyScrollLocks,
 } from "body-scroll-lock";
+
 import { BiX } from "react-icons/bi";
 import "./Modal.css";
 
 const Modal = ({ onClose, open = false, children }) => {
   const ref = useRef();
 
-  useEffect(() => {
-    if (ref.current) {
-      if (open) {
-        disableBodyScroll(ref.current);
-      } else {
-        enableBodyScroll(ref.current);
-      }
-    }
-    return () => {
-      clearAllBodyScrollLocks();
-    };
-  }, [open]);
-
   return (
     <Portal>
       <AnimatePresence>
         {open && (
           <motion.div
-            ref={ref}
             key="modal"
             initial="from"
             animate="to"
@@ -59,6 +46,7 @@ const Modal = ({ onClose, open = false, children }) => {
                     <BiX />
                   </button>
                 </div>
+
                 <div className="modal__content">{children}</div>
               </div>
             </div>

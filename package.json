@@ -29,6 +29,7 @@
     "react-use": "^17.3.2",
     "react-waypoint": "^10.1.0",
     "sanitize.css": "^13.0.0",
+    "swiper": "^8.0.3",
     "web-vitals": "^2.1.4"
   },
   "scripts": {

@@ -71,3 +71,7 @@
   color: rgba(var(--text-muted), 1);
   text-decoration: line-through;
 }
+
+.product-item__add-to-cart-button {
+  margin-top: 1em;
+}

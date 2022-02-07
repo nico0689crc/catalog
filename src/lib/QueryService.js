@@ -6,12 +6,12 @@ export class QueryService {
     this.basePath = basePath;
   }
 
-  async findAll() {
+  findAll = async () => {
     return await this.http.get(this.basePath).then(res => res.data);
-  }
+  };
 
-  async find(params) {
-    const { size = 10, page = 1, include, filter = [], ...restParams } = params;
+  find = async params => {
+    const { size = 10, page = 1, include, filter = [] } = params;
 
     const queries = {
       "page[size]": size,
@@ -30,9 +30,25 @@ export class QueryService {
     return this.http
       .get(`${this.basePath}?${queryString}`)
       .then(res => res.data);
-  }
+  };
 
-  async get(url) {
+  findOne = async ({ id, include }) => {
+    const queries = {
+      ...(Boolean(include) && { include: include.join(",") }),
+    };
+
+    const queryString = new URLSearchParams(queries).toString();
+
+    return this.http
+      .get(
+        `${this.basePath}/${id}${
+          queryString.length > 0 ? `?${queryString}` : ""
+        }`
+      )
+      .then(res => res.data);
+  };
+
+  get = async url => {
     return this.http.get(url).then(res => res.data);
-  }
+  };
 }

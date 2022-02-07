@@ -1,15 +1,14 @@
 import ProductToCartButton from "./ProductToCartButton";
-import "./ProductItem.css";
 import PriceFormater from "../PriceFormater/PriceFormater";
 import { useContext, useMemo } from "react";
 import { ModalContext, VIEWS } from "../../contexts/Modal";
+import "./ProductItem.css";
 
 const ProductItem = ({ product }) => {
   const { sale_price, price, quantity } = product.attributes;
   const { openModal } = useContext(ModalContext);
 
   const openModalHandler = product => {
-    console.log(product);
     openModal(VIEWS.PRODUCT_DETAILS, product);
   };
 
@@ -22,16 +21,19 @@ const ProductItem = ({ product }) => {
   }, [sale_price, price]);
 
   return (
-    <article
-      onClick={openModalHandler.bind(this, product)}
-      className="product-list__item"
-    >
+    <article className="product-list__item">
       {discount && <span className="product-item__discount">{discount}</span>}
 
-      <div className="product-item__image">
+      <div
+        onClick={openModalHandler.bind(this, product)}
+        className="product-item__image"
+      >
         <img src={product.attributes.images[0].thumbnail.url}></img>
       </div>
-      <header className="product-item__info">
+      <header
+        onClick={openModalHandler.bind(this, product)}
+        className="product-item__info"
+      >
         <div className="product-item__prices">
           {sale_price ? (
             <>
@@ -50,8 +52,9 @@ const ProductItem = ({ product }) => {
           )}
         </div>
         <h3 className="product-item__name">{product.attributes.name}</h3>
-        {quantity > 0 && <ProductToCartButton />}
       </header>
+      <div className="product-item__add-to-cart-button"></div>
+      {quantity > 0 && <ProductToCartButton />}
     </article>
   );
 };
