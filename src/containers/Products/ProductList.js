@@ -1,11 +1,11 @@
 import { useSearchParams } from "react-router-dom";
 import { Fragment } from "react";
 import { useProductsQuery } from "../../hooks/queries/useProductsQuery";
-import Button from "../Button/Button";
+import Button from "../../components/Button/Button";
 import ProductItem from "./ProductItem";
-import Error from "../Error/Error";
-import Loader from "../Loader/Loader";
-import NotFound from "../NotFound/NotFound";
+import Error from "../../components/Error/Error";
+import Loader from "../../components/Loader/Loader";
+import NotFound from "../../components/NotFound/NotFound";
 import "./ProductList.css";
 
 const ProductList = () => {
@@ -31,10 +31,8 @@ const ProductList = () => {
     isFetchingNextPage,
     fetchNextPage,
     hasNextPage,
-    isError,
     data,
     error,
-    getNextPageParam,
   } = useProductsQuery(params);
 
   const loadMoreHandler = () => {

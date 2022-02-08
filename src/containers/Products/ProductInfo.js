@@ -1,9 +1,9 @@
 import { useMemo } from "react";
 import { Link } from "react-router-dom";
 import { parseIncludedData } from "../../lib/parseIncludedData";
-import PriceFormater from "../PriceFormater/PriceFormater";
+import PriceFormater from "../../components/PriceFormater/PriceFormater";
 import ProductToCartButton from "./ProductToCartButton";
-import Divider from "../UI/Divider/Divider";
+import Divider from "../../components/UI/Divider/Divider";
 import ProductGallery from "./ProductGallery";
 import "./ProductInfo.css";
 

@@ -2,8 +2,8 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  min-width: 25em;
   min-height: 25em;
+  width: 100%;
 }
 
 .product-details__loader,
@@ -13,4 +13,14 @@
   align-items: center;
   width: 25em;
   height: 25em;
+}
+
+@media (min-width: 768px) {
+  .product-details {
+    width: 100%;
+  }
+
+  .modal__container.product-details-modal {
+    max-width: 70em;
+  }
 }

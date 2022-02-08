@@ -1,0 +1,100 @@
+.login-form__container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 94vh;
+  width: 100vw;
+  padding: 2em;
+  overflow: hidden;
+}
+
+.login-form__header p,
+.login-form__footer p,
+.login-form__footer a {
+  font-size: 1.2rem;
+  text-align: center;
+  color: rgba(var(--text-base), 1);
+}
+
+.login-form__header {
+  display: flex;
+  gap: 2em;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.login-form__logo {
+  width: 60%;
+}
+
+.login-form__logo img {
+  width: 100%;
+}
+
+.login-form__content {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.login-form__content form {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  height: 100%;
+  gap: 1.5em;
+}
+
+.login-form__footer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1em;
+  width: 100%;
+}
+
+.login-form__footer p,
+.login-form__footer span {
+  font-size: 1.2rem;
+}
+
+.login-form__footer span,
+.login-form__content form a,
+.login-form__content form svg {
+  color: rgba(var(--color-accent), 1);
+}
+
+.login-form__footer span {
+  cursor: pointer;
+}
+
+@media portrait and (min-height: 900px) {
+  .modal__container.login-form-modal {
+    max-height: 45em;
+  }
+}
+
+@media (min-width: 768px) {
+  .login-form__container {
+    height: 100%;
+  }
+
+  .modal__container.login-form-modal {
+    max-width: 30em;
+    height: 70%;
+  }
+}
+
+@media (min-width: 1024px) {
+  .modal__container.login-form-modal {
+    height: 80%;
+  }
+}
+
+@media (min-width: 1280px) {
+  .modal__container.login-form-modal {
+    height: 90%;
+  }
+}

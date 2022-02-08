@@ -7,7 +7,7 @@ import NavActionsMobileContainer from "../../containers/NavActionsMobile/NavActi
 import SidePanelsContainer from "../../containers/SidePanels/SidePanels";
 import Categories from "../../components/Categories/Categories";
 import { AppSettingsContext, BREAK_POINTS } from "../../contexts/AppSettings";
-import ProductList from "../../components/Products/ProductList";
+import ProductList from "../../containers/Products/ProductList";
 import "./Home.css";
 
 const Home = () => {

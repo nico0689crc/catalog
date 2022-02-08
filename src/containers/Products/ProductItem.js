@@ -1,5 +1,5 @@
 import ProductToCartButton from "./ProductToCartButton";
-import PriceFormater from "../PriceFormater/PriceFormater";
+import PriceFormater from "../../components/PriceFormater/PriceFormater";
 import { useContext, useMemo } from "react";
 import { ModalContext, VIEWS } from "../../contexts/Modal";
 import "./ProductItem.css";

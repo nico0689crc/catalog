@@ -6,16 +6,29 @@ import {
   CgUser,
   CgShoppingBag,
 } from "react-icons/cg";
+import { AuthContext } from "../../contexts/AuthContext";
+import { ModalContext, VIEWS as VIEWS_MODALS } from "../../contexts/Modal";
 import { AppSettingsContext } from "../../contexts/AppSettings";
-import { SidePanelContext, VIEWS } from "../../contexts/SidePanels";
+import {
+  SidePanelContext,
+  VIEWS as VIEWS_PANELS,
+} from "../../contexts/SidePanels";
 import "./NavActionsMobileContainer.css";
 
 const NavActionsMobileContainer = () => {
   const { setDisplaySearchInputMobile } = useContext(AppSettingsContext);
   const { displaySidePanelHandler } = useContext(SidePanelContext);
+  const { openModal } = useContext(ModalContext);
+  const { token } = useContext(AuthContext);
 
   const displaySearchInputMobile = () => {
     setDisplaySearchInputMobile(prev => !prev);
+  };
+
+  const openUserAuthHandler = () => {
+    token
+      ? displaySidePanelHandler(VIEWS_PANELS.USER_PROFILE)
+      : openModal(VIEWS_MODALS.AUTH_LOGIN, null);
   };
 
   return (
@@ -24,7 +37,7 @@ const NavActionsMobileContainer = () => {
         <li className="nav-actions-mobile__item">
           <button
             onClick={() => {
-              displaySidePanelHandler(VIEWS.MAIN_MENU);
+              displaySidePanelHandler(VIEWS_PANELS.MAIN_MENU);
             }}
             className="nav-actions-mobile__button"
           >
@@ -47,7 +60,7 @@ const NavActionsMobileContainer = () => {
         <li className="nav-actions-mobile__item">
           <button
             onClick={() => {
-              displaySidePanelHandler(VIEWS.CART);
+              displaySidePanelHandler(VIEWS_PANELS.CART);
             }}
             className="nav-actions-mobile__button"
           >
@@ -56,9 +69,7 @@ const NavActionsMobileContainer = () => {
         </li>
         <li className="nav-actions-mobile__item">
           <button
-            onClick={() => {
-              displaySidePanelHandler(VIEWS.USER_PROFILE);
-            }}
+            onClick={openUserAuthHandler}
             className="nav-actions-mobile__button"
           >
             <CgUser />

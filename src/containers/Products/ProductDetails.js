@@ -1,8 +1,8 @@
-import Loader from "../Loader/Loader";
-import Error from "../Error/Error";
+import Loader from "../../components/Loader/Loader";
+import Error from "../../components/Error/Error";
 import { useProductQuery } from "../../hooks/queries/useProductQuery";
-import "./ProductDetails.css";
 import ProductInfo from "./ProductInfo";
+import "./ProductDetails.css";
 
 const ProductDetails = ({ product }) => {
   const { data, error, isLoading, isFetched } = useProductQuery({

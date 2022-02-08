@@ -13,7 +13,23 @@ const initialStateReducer = {
 };
 
 export const VIEWS = {
-  PRODUCT_DETAILS: "PRODUCT_DETAILS",
+  PRODUCT_DETAILS: {
+    name: "PRODUCT_DETAILS",
+    className: "product-details-modal",
+  },
+  AUTH_LOGIN: {
+    name: "AUTH_LOGIN",
+    className: "login-form-modal",
+  },
+  AUTH_REGISTER: {
+    name: "AUTH_REGISTER",
+    className: "register-form-modal",
+  },
+
+  AUTH_RESET_PASSWORD: {
+    name: "AUTH_RESET_PASSWORD",
+    className: "reset-password-form-modal",
+  },
 };
 
 export const MODAL_STATUS = {

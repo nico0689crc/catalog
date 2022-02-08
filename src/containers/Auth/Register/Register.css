@@ -1,0 +1,94 @@
+.register-form__container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 94vh;
+  width: 100vw;
+  padding: 2em;
+  overflow: hidden;
+}
+
+.register-form__header p,
+.register-form__footer p,
+.register-form__footer a {
+  font-size: 1.2rem;
+  text-align: center;
+  color: rgba(var(--text-base), 1);
+}
+
+.register-form__header {
+  display: flex;
+  gap: 2em;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.register-form__logo {
+  width: 60%;
+}
+
+.register-form__logo img {
+  width: 100%;
+}
+
+.register-form__content {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.register-form__content form {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  height: 100%;
+  gap: 1.5em;
+}
+
+.register-form__footer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1em;
+  width: 100%;
+}
+
+.register-form__footer p,
+.register-form__footer span {
+  font-size: 1.2rem;
+}
+
+.register-form__footer span,
+.register-form__content form a,
+.register-form__content form svg {
+  color: rgba(var(--color-accent), 1);
+}
+
+.register-form__footer span {
+  cursor: pointer;
+}
+
+@media (min-width: 768px) {
+  .register-form__container {
+    height: 100%;
+  }
+
+  .modal__container.register-form-modal {
+    max-width: 30em;
+    height: 80%;
+  }
+}
+
+@media (min-width: 1024px) {
+  .modal__container.register-form-modal {
+    height: 87%;
+  }
+}
+
+@media (min-width: 1280px) {
+  .modal__container.register-form-modal {
+    height: 95%;
+  }
+}

@@ -1,14 +1,18 @@
 import { useContext } from "react";
 import { AppSettingsContext, BREAK_POINTS } from "../../contexts/AppSettings";
-import { SidePanelContext, VIEWS } from "../../contexts/SidePanels";
+import {
+  SidePanelContext,
+  VIEWS as VIEWS_PANELS,
+} from "../../contexts/SidePanels";
 import { BiCustomize } from "react-icons/bi";
+import { AuthContext } from "../../contexts/AuthContext";
+import { ModalContext, VIEWS as VIEWS_MODALS } from "../../contexts/Modal";
 import classNames from "classnames";
 import Logo from "../../components/Logo/Logo";
 import Button from "../../components/Button/Button";
 import Links from "../../components/Links/Links";
-import "./HeaderContainer.css";
-import { AuthContext } from "../../contexts/AuthContext";
 import InputSearchHeader from "../../components/InputSearchHeader/InputSearchHeader";
+import "./HeaderContainer.css";
 
 export const POSITIONS = {
   ABSOLUTE: "absolute",
@@ -24,6 +28,7 @@ const HeaderContainer = () => {
   } = useContext(AppSettingsContext);
 
   const { displaySidePanelHandler } = useContext(SidePanelContext);
+  const { openModal } = useContext(ModalContext);
 
   const auth = useContext(AuthContext);
 
@@ -50,6 +55,10 @@ const HeaderContainer = () => {
     (positionHeader === POSITIONS.FIXED &&
       currentWidth < BREAK_POINTS.mobile &&
       displaySearchInputMobile);
+
+  const authOpenModalHandler = () => {
+    openModal(VIEWS_MODALS.AUTH_LOGIN, null);
+  };
 
   return (
     <>
@@ -79,6 +88,7 @@ const HeaderContainer = () => {
         <div className="user-actions">
           {!auth.isLoggedIn && (
             <Button
+              onClick={authOpenModalHandler}
               shape="round"
               type="primary"
               htmlType="button"
@@ -90,7 +100,7 @@ const HeaderContainer = () => {
       <div className={`filter-bar border ${classes}`}>
         <Button
           onClick={() => {
-            displaySidePanelHandler(VIEWS.CATEGORIES);
+            displaySidePanelHandler(VIEWS_PANELS.CATEGORIES);
           }}
           shape="round"
           htmlType="button"

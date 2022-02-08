@@ -3,10 +3,9 @@ import { GrLinkNext, GrLinkPrevious } from "react-icons/gr";
 import {
   Swiper,
   SwiperSlide,
-  SwiperOptions,
   Navigation,
   Thumbs,
-} from "../UI/Slider/Slider";
+} from "../../components/UI/Slider/Slider";
 
 import "./ProductGallery.css";
 
@@ -31,7 +30,6 @@ const swiperParams = {
 
 const ProductGallery = ({ images }) => {
   const [thumbsSwiper, setThumbsSwiper] = useState(null);
-  console.log(images);
   const prevRef = useRef(null);
   const nextRef = useRef(null);
 
