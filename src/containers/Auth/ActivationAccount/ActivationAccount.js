@@ -1,5 +1,5 @@
 import { useContext, useEffect, useState } from "react";
-import { useSearchParams } from "react-router-dom";
+import { useSearchParams, useNavigate } from "react-router-dom";
 import { ModalContext, VIEWS } from "../../../contexts/Modal";
 import ActivationAccountComponent from "../../../components/Auth/ActivationAccount/ActivationAccount";
 import { useActivateAccountMutation } from "../../../hooks/queries/authQueries";
@@ -9,6 +9,7 @@ const ActivationAccountContainer = () => {
   const searchParams = useSearchParams()[0];
   const [errorsMutation, setErrorsMutation] = useState(null);
   const mutation = useActivateAccountMutation();
+  const navigate = useNavigate();
 
   const openLoginModalHandler = () => {
     openModal(VIEWS.AUTH_LOGIN);
@@ -21,6 +22,9 @@ const ActivationAccountContainer = () => {
     };
 
     mutation.mutate(input, {
+      onSuccess: () => {
+        navigate("/");
+      },
       onError: error => {
         setErrorsMutation(error.response.data.errors);
       },

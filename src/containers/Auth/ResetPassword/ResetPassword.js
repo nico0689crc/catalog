@@ -1,5 +1,5 @@
 import { useContext, useState } from "react";
-import { useSearchParams } from "react-router-dom";
+import { useSearchParams, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { useTranslation } from "react-i18next";
 import { yupResolver } from "@hookform/resolvers/yup";
@@ -34,6 +34,7 @@ const ResetPasswordContainer = () => {
   const { t } = useTranslation("auth", { useSuspense: false });
   const { resetPasswordFormSchema, defaultValues } = getFormSchema(t);
   const mutation = useResetPasswordMutation();
+  const navigate = useNavigate();
 
   const formHook = useForm({
     defaultValues,
@@ -52,6 +53,9 @@ const ResetPasswordContainer = () => {
     };
 
     mutation.mutate(input, {
+      onSuccess: () => {
+        navigate("/");
+      },
       onError: error => {
         setErrorsMutation(error.response.data.errors);
       },
