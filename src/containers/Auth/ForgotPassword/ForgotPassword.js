@@ -1,39 +1,33 @@
 import { useContext, useState } from "react";
-import { useSearchParams } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { useTranslation } from "react-i18next";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import { ModalContext, VIEWS } from "../../../contexts/Modal";
-import ResetPasswordComponent from "../../../components/Auth/ResetPassword/ResetPassword";
-import { useResetPasswordMutation } from "../../../hooks/queries/authQueries";
+import ForgotPasswordComponent from "../../../components/Auth/ForgotPassword/ForgotPassword";
+import { useForgotPasswordMutation } from "../../../hooks/queries/authQueries";
 
 const getFormSchema = t => {
   const resetPasswordFormSchema = yup.object().shape({
-    password: yup
+    email: yup
       .string()
-      .required(t("text_validation_required_password_input"))
-      .min(6, t("min_length_6"))
-      .matches(
-        /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/,
-        t("text_validation_format_password_input")
-      ),
+      .email(t("text_validation_format_email_input"))
+      .required(t("text_validation_required_email_input")),
   });
 
   const defaultValues = {
-    password: "",
+    email: "",
   };
 
   return { resetPasswordFormSchema, defaultValues };
 };
 
-const ResetPasswordContainer = () => {
+const ForgotPasswordContainer = () => {
   const { openModal } = useContext(ModalContext);
-  const searchParams = useSearchParams()[0];
   const [errorsMutation, setErrorsMutation] = useState(null);
   const { t } = useTranslation("auth", { useSuspense: false });
   const { resetPasswordFormSchema, defaultValues } = getFormSchema(t);
-  const mutation = useResetPasswordMutation();
+  const mutation = useForgotPasswordMutation();
 
   const formHook = useForm({
     defaultValues,
@@ -47,8 +41,7 @@ const ResetPasswordContainer = () => {
   const onSubmit = async data => {
     const input = {
       ...data,
-      token: searchParams.get("token"),
-      userId: searchParams.get("userId"),
+      redirectionUrl: process.env.REACT_APP_FRONTEND_URL + "/",
     };
 
     mutation.mutate(input, {
@@ -59,7 +52,7 @@ const ResetPasswordContainer = () => {
   };
 
   return (
-    <ResetPasswordComponent
+    <ForgotPasswordComponent
       formHook={formHook}
       mutation={mutation}
       errorsMutation={errorsMutation}
@@ -70,4 +63,4 @@ const ResetPasswordContainer = () => {
   );
 };
 
-export default ResetPasswordContainer;
+export default ForgotPasswordContainer;

@@ -29,7 +29,7 @@ export const AppSettingProvider = ({ children }) => {
   const [displaySearchInputMobile, setDisplaySearchInputMobile] =
     useState(false);
   const [isMobileView, setIsMobileView] = useState(width > BREAK_POINTS.mobile);
-  const [currency, setCurrency] = useState("USD");
+  const currency = useState("USD")[0];
 
   useEffect(() => {
     if (width > BREAK_POINTS.mobile) {

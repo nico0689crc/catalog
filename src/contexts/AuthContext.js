@@ -37,7 +37,7 @@ export const useAuth = () => {
   const [userId, setUserId] = useState(false);
   const [attributes, setAttributes] = useState(null);
   const [tokenExpirationDate, setTokenExpirationDate] = useState();
-  const LOCALSTORAGE_ITEM_NAME = "userDataCatalog";
+  const LOCALSTORAGE_ITEM_NAME = "userDataCatalogFront";
 
   const login = useCallback((uid, attributes, expirationDate) => {
     setUserId(uid);

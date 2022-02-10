@@ -8,11 +8,13 @@ import SidePanelsContainer from "../../containers/SidePanels/SidePanels";
 import Categories from "../../components/Categories/Categories";
 import { AppSettingsContext, BREAK_POINTS } from "../../contexts/AppSettings";
 import ProductList from "../../containers/Products/ProductList";
+import { ModalContext, VIEWS as VIEWS_MODALS } from "../../contexts/Modal";
 import "./Home.css";
 
 const Home = () => {
   const searchParams = useSearchParams()[0];
   const { isMobileView, currentWidth } = useContext(AppSettingsContext);
+  const { openModal, closeModal, state } = useContext(ModalContext);
 
   useEffect(() => {
     if (searchParams.get("category")) {
@@ -21,7 +23,22 @@ const Home = () => {
         offset: -103,
       });
     }
-  }, [searchParams.get("category")]);
+  }, [searchParams]);
+
+  useEffect(() => {
+    if (searchParams.get("token") && searchParams.get("userId")) {
+      openModal(VIEWS_MODALS.AUTH_RESET_PASSWORD);
+    } else if (
+      searchParams.get("confirmationCode") &&
+      searchParams.get("userId")
+    ) {
+      openModal(VIEWS_MODALS.AUTH_ACTIVATION_ACCOUNT);
+    } else {
+      if (state.isOpen) {
+        closeModal();
+      }
+    }
+  }, []);
 
   return (
     <>

@@ -1,14 +1,12 @@
+import { useContext, useState } from "react";
+import { useForm } from "react-hook-form";
 import { useTranslation } from "react-i18next";
 import { yupResolver } from "@hookform/resolvers/yup";
-import * as yup from "yup";
-import { useForm } from "react-hook-form";
-import Input from "../../../components/Input/Input";
-import Button from "../../../components/Button/Button";
-import Logo from "../../../components/Logo/Logo";
-import DividerForm from "../../../components/UI/DividerForm/DividerForm";
-import { useContext } from "react";
 import { ModalContext, VIEWS } from "../../../contexts/Modal";
-import "./Login.css";
+import { AuthContext } from "../../../contexts/AuthContext";
+import { useLoginMutation } from "../../../hooks/queries/authQueries";
+import * as yup from "yup";
+import LoginComponent from "../../../components/Auth/Login/Login";
 
 const getFormSchema = t => {
   const loginFormSchema = yup.object().shape({
@@ -29,16 +27,15 @@ const getFormSchema = t => {
   return { loginFormSchema, defaultValues };
 };
 
-const Login = () => {
-  const { openModal } = useContext(ModalContext);
+const LoginContainer = () => {
   const { t } = useTranslation("auth", { useSuspense: false });
+  const [errorsMutation, setErrorsMutation] = useState(null);
+  const { openModal, closeModal } = useContext(ModalContext);
+  const { login } = useContext(AuthContext);
+  const mutation = useLoginMutation();
   const { loginFormSchema, defaultValues } = getFormSchema(t);
 
-  const {
-    register,
-    formState: { errors },
-    handleSubmit,
-  } = useForm({
+  const formHook = useForm({
     defaultValues,
     resolver: yupResolver(loginFormSchema),
   });
@@ -48,62 +45,32 @@ const Login = () => {
   };
 
   const openResetPasswordModalHandler = () => {
-    openModal(VIEWS.AUTH_RESET_PASSWORD);
+    openModal(VIEWS.AUTH_FORGOT_PASSWORD);
   };
 
-  const onSubmit = async data => {};
+  const onSubmit = async data => {
+    mutation.mutate(data, {
+      onError: error => {
+        setErrorsMutation(error.response.data.errors);
+      },
+      onSuccess: res => {
+        const { id, attributes } = res.data;
+        login(id, attributes);
+        closeModal();
+      },
+    });
+  };
 
   return (
-    <div className="login-form__container">
-      <div className="login-form__header">
-        <div className="login-form__logo">
-          <Logo />
-        </div>
-        <p className="login-form__form-description">
-          {t("text_login_form_description")}
-        </p>
-      </div>
-      <DividerForm size="large" />
-      <div className="login-form__content">
-        <form onSubmit={handleSubmit(onSubmit)}>
-          <Input
-            id="email"
-            type="text"
-            label={t("label_email_input")}
-            error={errors?.email?.message}
-            register={register}
-          />
-
-          <Input.Password
-            id="password"
-            type="password"
-            label={t("label_password_input")}
-            onClickPasswordReset={openResetPasswordModalHandler}
-            labelLinkText={t("text_forgot_password_link")}
-            error={errors?.password?.message}
-            register={register}
-          />
-
-          <Button
-            htmlType="submit"
-            shape="round"
-            text={t("label_submit_login")}
-            type="primary"
-            loadingText={t("label_submit_login_loading")}
-            block
-            onClick={() => {}}
-          />
-        </form>
-      </div>
-      <DividerForm size="large" />
-      <div className="login-form__footer">
-        <p>{t("text_register_description")}</p>
-        <span onClick={openRegisterModalHandler}>
-          {t("text_register_link")}
-        </span>
-      </div>
-    </div>
+    <LoginComponent
+      formHook={formHook}
+      mutation={mutation}
+      errorsMutation={errorsMutation}
+      onSubmit={onSubmit}
+      onOpenRegister={openRegisterModalHandler}
+      onOpenForgotPassword={openResetPasswordModalHandler}
+    />
   );
 };
 
-export default Login;
+export default LoginContainer;

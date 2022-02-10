@@ -1,0 +1,77 @@
+.activation-account-form__container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2em;
+  width: 100vw;
+  padding: 2em;
+  overflow: hidden;
+}
+
+.activation-account-form__header p,
+.activation-account-form__footer p,
+.activation-account-form__footer a {
+  font-size: 1.2rem;
+  text-align: center;
+  color: rgba(var(--text-base), 1);
+}
+
+.activation-account-form__header {
+  display: flex;
+  gap: 2em;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.activation-account-form__logo {
+  width: 60%;
+}
+
+.activation-account-form__logo img {
+  width: 100%;
+}
+
+.activation-account-form__content {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.activation-account-form__content form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100%;
+  gap: 1.5em;
+}
+
+.activation-account-form__footer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1em;
+  width: 100%;
+}
+
+.activation-account-form__footer p,
+.activation-account-form__footer span {
+  font-size: 1.2rem;
+}
+
+.activation-account-form__footer span,
+.activation-account-form__content form a,
+.activation-account-form__content form svg {
+  color: rgba(var(--color-accent), 1);
+}
+
+.activation-account-form__footer span {
+  cursor: pointer;
+}
+
+@media (min-width: 768px) {
+  .modal__container.activation-account-form-modal {
+    max-width: 30em;
+  }
+}

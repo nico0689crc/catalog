@@ -50,7 +50,6 @@
 
 .modal__content {
   display: flex;
-  flex-grow: 1;
   align-items: center;
   justify-content: center;
   width: 100%;
@@ -61,6 +60,6 @@
   .modal__container {
     border-radius: 5px;
     width: 95%;
-    height: 95%;
+    height: auto;
   }
 }

@@ -17,18 +17,30 @@ export const VIEWS = {
     name: "PRODUCT_DETAILS",
     className: "product-details-modal",
   },
+
   AUTH_LOGIN: {
     name: "AUTH_LOGIN",
     className: "login-form-modal",
   },
+
   AUTH_REGISTER: {
     name: "AUTH_REGISTER",
     className: "register-form-modal",
   },
 
+  AUTH_FORGOT_PASSWORD: {
+    name: "AUTH_FORGOT_PASSWORD",
+    className: "forgot-password-form-modal",
+  },
+
   AUTH_RESET_PASSWORD: {
     name: "AUTH_RESET_PASSWORD",
     className: "reset-password-form-modal",
+  },
+
+  AUTH_ACTIVATION_ACCOUNT: {
+    name: "AUTH_ACTIVATION_ACCOUNT",
+    className: "activation-account-form-modal",
   },
 };
 
