@@ -1,15 +1,30 @@
-import { useState } from "react";
+import { useContext, useEffect, useState } from "react";
+import { CartContext } from "../../contexts/Cart/Cart";
 import "./ProductToCartButton.css";
 
-const ProductToCartButton = () => {
+const ProductToCartButton = ({ product }) => {
   const [amountItems, setAmountItems] = useState(0);
+  const { increaseItemQuantity, decreaseItemQuantity, items } =
+    useContext(CartContext);
 
   const decrementHandler = () => {
-    setAmountItems(prev => (prev > 0 ? prev - 1 : 0));
+    decreaseItemQuantity({ id: product.id, ...product.attributes });
   };
+
   const incrementHandler = () => {
-    setAmountItems(prev => prev + 1);
+    increaseItemQuantity({ id: product.id, ...product.attributes });
   };
+
+  useEffect(() => {
+    const itemCartIndex = items.findIndex(item => product.id === item.id);
+
+    if (itemCartIndex > -1) {
+      const amount = items[itemCartIndex].quantity;
+      setAmountItems(amount);
+    } else {
+      setAmountItems(0);
+    }
+  }, [items]);
 
   return (
     <div className="product-item__add-to-cart-button">

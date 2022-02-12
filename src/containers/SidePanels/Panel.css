@@ -30,7 +30,7 @@
   top: 0;
   bottom: 0;
   background-color: white;
-  width: 80%;
+  width: 100%;
   max-width: 450px;
 }
 
@@ -76,8 +76,8 @@
 }
 
 .header__button-close svg {
-  color: rgba(var(--text-base-dark), 1);
-  font-size: 0.8rem;
+  font-size: 1.5rem;
+  color: rgba(var(--text-base), 1);
 }
 
 .header__button-close:hover svg {
@@ -102,4 +102,10 @@
 
 .panel__content {
   flex-grow: 1;
+}
+
+@media (min-width: 640px) {
+  .panel__container {
+    width: 80%;
+  }
 }

@@ -11,7 +11,7 @@
 .register-form__header p,
 .register-form__footer p,
 .register-form__footer a {
-  font-size: 1.2rem;
+  font-size: 1rem;
   text-align: center;
   color: rgba(var(--text-base), 1);
 }
@@ -48,6 +48,7 @@
 
 .register-form__footer {
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
   gap: 1em;
@@ -56,7 +57,7 @@
 
 .register-form__footer p,
 .register-form__footer span {
-  font-size: 1.2rem;
+  font-size: 1rem;
 }
 
 .register-form__footer span,

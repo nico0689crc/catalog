@@ -80,6 +80,16 @@
     list-style: none;
   }
 
+  .navbar__item {
+    gap: 2em;
+    list-style: none;
+  }
+
+  .navbar__item a {
+    color: rgba(var(--text-base-dark), 1);
+    font-size: 1.1rem;
+  }
+
   .user-actions__join-button {
     font-size: 1rem;
     font-weight: 600;

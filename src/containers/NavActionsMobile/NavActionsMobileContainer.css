@@ -16,7 +16,20 @@
 }
 
 .nav-actions-mobile__item {
+  position: relative;
   list-style: none;
+}
+
+.cart_items_counter {
+  position: absolute;
+  top: -5px;
+  right: 0;
+  font-size: 0.7rem;
+  font-weight: bolder;
+  background-color: rgba(var(--color-accent), 1);
+  color: rgba(var(--color-light), 1);
+  border-radius: 50%;
+  padding: 0.1em 0.5em;
 }
 
 .nav-actions-mobile__button {

@@ -10,6 +10,7 @@ import { AppSettingsContext, BREAK_POINTS } from "../../contexts/AppSettings";
 import ProductList from "../../containers/Products/ProductList";
 import { ModalContext, VIEWS as VIEWS_MODALS } from "../../contexts/Modal";
 import "./Home.css";
+import CartFloatCounter from "../../components/CartFloatCounter/CartFloatCounter";
 
 const Home = () => {
   const searchParams = useSearchParams()[0];
@@ -43,6 +44,7 @@ const Home = () => {
   return (
     <>
       <HeaderContainer />
+      {!isMobileView && <CartFloatCounter />}
       {isMobileView && <NavActionsMobileContainer />}
 
       <SidePanelsContainer />

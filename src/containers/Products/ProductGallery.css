@@ -48,6 +48,10 @@
   justify-content: center;
 }
 
+.product-gallery__thumbs + div {
+  width: 100%;
+}
+
 .product-gallery__thumb {
   display: flex;
   justify-content: center;

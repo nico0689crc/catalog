@@ -54,7 +54,7 @@ const ProductItem = ({ product }) => {
         <h3 className="product-item__name">{product.attributes.name}</h3>
       </header>
       <div className="product-item__add-to-cart-button"></div>
-      {quantity > 0 && <ProductToCartButton />}
+      {quantity > 0 && <ProductToCartButton product={product} />}
     </article>
   );
 };

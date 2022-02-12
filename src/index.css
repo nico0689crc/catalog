@@ -23,10 +23,6 @@
   --text-muted: 156, 163, 175;
 }
 
-html {
-  font-size: 0.8rem;
-}
-
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
@@ -44,16 +40,4 @@ h3,
 ul,
 p {
   margin: 0;
-}
-
-@media (min-width: 1024px) {
-  html {
-    font-size: 0.9rem;
-  }
-}
-
-@media (min-width: 1280px) {
-  html {
-    font-size: 1rem;
-  }
 }

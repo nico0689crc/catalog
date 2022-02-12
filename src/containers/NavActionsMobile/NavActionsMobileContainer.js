@@ -14,11 +14,13 @@ import {
   VIEWS as VIEWS_PANELS,
 } from "../../contexts/SidePanels";
 import "./NavActionsMobileContainer.css";
+import { CartContext } from "../../contexts/Cart/Cart";
 
 const NavActionsMobileContainer = () => {
   const { setDisplaySearchInputMobile } = useContext(AppSettingsContext);
   const { displaySidePanelHandler } = useContext(SidePanelContext);
   const { openModal } = useContext(ModalContext);
+  const { totalItems } = useContext(CartContext);
   const { token } = useContext(AuthContext);
 
   const displaySearchInputMobile = () => {
@@ -58,6 +60,7 @@ const NavActionsMobileContainer = () => {
           </button>
         </li>
         <li className="nav-actions-mobile__item">
+          <span className="cart_items_counter">{totalItems}</span>
           <button
             onClick={() => {
               displaySidePanelHandler(VIEWS_PANELS.CART);

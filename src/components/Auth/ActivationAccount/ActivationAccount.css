@@ -12,7 +12,7 @@
 .activation-account-form__header p,
 .activation-account-form__footer p,
 .activation-account-form__footer a {
-  font-size: 1.2rem;
+  font-size: 1rem;
   text-align: center;
   color: rgba(var(--text-base), 1);
 }
@@ -49,6 +49,7 @@
 
 .activation-account-form__footer {
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
   gap: 1em;
@@ -57,7 +58,7 @@
 
 .activation-account-form__footer p,
 .activation-account-form__footer span {
-  font-size: 1.2rem;
+  font-size: 1rem;
 }
 
 .activation-account-form__footer span,

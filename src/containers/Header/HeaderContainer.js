@@ -13,6 +13,8 @@ import Button from "../../components/Button/Button";
 import Links from "../../components/Links/Links";
 import InputSearchHeader from "../../components/InputSearchHeader/InputSearchHeader";
 import "./HeaderContainer.css";
+import ButtonDropdown from "../../components/ButtonDropdown/ButtonDropdown";
+import { useTranslation } from "react-i18next";
 
 export const POSITIONS = {
   ABSOLUTE: "absolute",
@@ -29,7 +31,7 @@ const HeaderContainer = () => {
 
   const { displaySidePanelHandler } = useContext(SidePanelContext);
   const { openModal } = useContext(ModalContext);
-
+  const { t } = useTranslation("header", { useSuspense: false });
   const auth = useContext(AuthContext);
 
   const positionHeader = isMobileView
@@ -62,6 +64,17 @@ const HeaderContainer = () => {
 
   return (
     <>
+      <div className={`filter-bar border ${classes}`}>
+        <Button
+          onClick={() => {
+            displaySidePanelHandler(VIEWS_PANELS.CATEGORIES);
+          }}
+          shape="round"
+          htmlType="button"
+          text={t("text_filter_button")}
+          icon={<BiCustomize />}
+        />
+      </div>
       <header className={`main-header ${classes}`}>
         {!displaySearchInputMobile && (
           <div className="logo">
@@ -78,36 +91,27 @@ const HeaderContainer = () => {
         <nav className="navbar">
           <ul className="navbar__items">
             <li className="navbar__item">
-              <Links to="/help" text="Questions" />
+              <Links to="/help" text={t("text_navbar_question")} />
             </li>
             <li className="navbar__item">
-              <Links to="/contact" text="Contact" />
+              <Links to="/contact" text={t("text_navbar_contact")} />
             </li>
           </ul>
         </nav>
         <div className="user-actions">
-          {!auth.isLoggedIn && (
+          {!auth.isLoggedIn ? (
             <Button
               onClick={authOpenModalHandler}
               shape="round"
               type="primary"
               htmlType="button"
-              text="Join"
+              text={t("text_join_button")}
             />
+          ) : (
+            <ButtonDropdown />
           )}
         </div>
       </header>
-      <div className={`filter-bar border ${classes}`}>
-        <Button
-          onClick={() => {
-            displaySidePanelHandler(VIEWS_PANELS.CATEGORIES);
-          }}
-          shape="round"
-          htmlType="button"
-          text="Filter"
-          icon={<BiCustomize />}
-        />
-      </div>
     </>
   );
 };

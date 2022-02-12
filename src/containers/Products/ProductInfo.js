@@ -49,7 +49,7 @@ const ProductInfo = ({ product }) => {
             )}
           </div>
           <div className="product__group-items">
-            {quantity > 0 && <ProductToCartButton />}
+            {quantity > 0 && <ProductToCartButton product={product.data} />}
             <p className="product__quantity">
               {quantity} unidades disponibles.
             </p>

@@ -1,0 +1,13 @@
+.cart-article-counter__container {
+  display: flex;
+  height: 100%;
+  width: 100%;
+  gap: 0.5em;
+  align-items: center;
+  color: rgba(var(--color-accent), 1);
+  font-weight: 500;
+}
+
+.cart-article-counter__container svg {
+  font-size: 1.25em;
+}

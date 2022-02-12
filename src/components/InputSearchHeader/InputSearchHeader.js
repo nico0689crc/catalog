@@ -1,8 +1,10 @@
 import { useRef, useState } from "react";
+import { useTranslation } from "react-i18next";
 import { BiSearchAlt, BiX } from "react-icons/bi";
 import "./InputSearchHeader.css";
 
 const InputSearch = () => {
+  const { t } = useTranslation("header", { useSuspense: false });
   const inputRef = useRef();
   const [showClearInput, setShowClearInput] = useState(false);
 
@@ -19,7 +21,7 @@ const InputSearch = () => {
     <form className="search-header__form" onSubmit={() => {}}>
       <div className="input-search-header__group">
         <input
-          placeholder="Search your product from here"
+          placeholder={t("text_input_search_placeholder")}
           type="text"
           autoComplete="off"
           className="input_search-header__input"

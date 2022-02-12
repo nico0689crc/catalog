@@ -1,42 +1,21 @@
-import { useRef, useEffect } from "react";
-import { AiOutlineClose } from "react-icons/ai";
+import { BiX } from "react-icons/bi";
 import { motion, AnimatePresence } from "framer-motion";
 import { fadeInLeft } from "../../lib/motion/fadeInLeft";
 import { fadeInRight } from "../../lib/motion/fadeInRight";
 import { fadeInOut } from "../../lib/motion/fadeInOut";
 import { OverlayScrollbarsComponent } from "overlayscrollbars-react";
 import Portal from "@reach/portal";
-import {
-  disableBodyScroll,
-  enableBodyScroll,
-  clearAllBodyScrollLocks,
-} from "body-scroll-lock";
+
 import "overlayscrollbars/css/OverlayScrollbars.css";
 import "./Panel.css";
 import Logo from "../../components/Logo/Logo";
 
 const Panel = ({ children, open = false, variant = "right", onClose }) => {
-  const ref = useRef();
-
-  useEffect(() => {
-    if (ref.current) {
-      if (open) {
-        disableBodyScroll(ref.current);
-      } else {
-        enableBodyScroll(ref.current);
-      }
-    }
-    return () => {
-      clearAllBodyScrollLocks();
-    };
-  }, [open]);
-
   return (
     <Portal>
       <AnimatePresence>
         {open && (
           <motion.aside
-            ref={ref}
             key="drawer"
             initial="from"
             animate="to"
@@ -77,7 +56,7 @@ const Panel = ({ children, open = false, variant = "right", onClose }) => {
                           onClick={onClose}
                           className="header__button-close"
                         >
-                          <AiOutlineClose />
+                          <BiX />
                         </button>
                       </div>
                     </div>

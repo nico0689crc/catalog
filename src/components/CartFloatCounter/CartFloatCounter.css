@@ -1,0 +1,37 @@
+.cart-float-counter__container {
+  position: fixed;
+  top: 50%;
+  right: 0;
+  padding: 0.5em 0.25em;
+  background-color: rgba(var(--color-accent), 1);
+  font-weight: bolder;
+  font-size: 0.9rem;
+  transform: translateY(-50%);
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
+  z-index: 1;
+  cursor: pointer;
+}
+
+.cart-float-counter__info {
+  padding: 0.75em;
+  text-align: center;
+}
+
+.cart-float-counter__counter {
+  display: flex;
+  align-items: center;
+  gap: 0.5em;
+  color: rgba(var(--color-light), 1);
+}
+
+.cart-float-counter__counter svg {
+  font-size: 1.5em;
+}
+
+.cart-float-counter__totalPrice {
+  background-color: rgba(var(--color-light), 1);
+  color: rgba(var(--color-accent), 1);
+  padding: 0.75em;
+  border-radius: 5px;
+}

@@ -1,0 +1,30 @@
+.cart-total-price__container {
+  padding: 1.5em;
+}
+.cart-total-price__button {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 3.5em;
+  width: 100%;
+  padding: 0.3em;
+  padding-inline-end: 1em;
+  padding-inline-start: 1em;
+  background-color: rgba(var(--color-accent), 1);
+  border: 1px solid transparent;
+  cursor: pointer;
+  border-radius: 9999px;
+  font-weight: 600;
+  font-size: 1rem;
+}
+
+.cart-total-price__label {
+  color: rgba(var(--color-light), 1);
+}
+
+.cart-total-price__total-price {
+  background-color: rgba(var(--color-light), 1);
+  color: rgba(var(--color-accent), 1);
+  padding: 0.75em;
+  border-radius: 9999px;
+}
