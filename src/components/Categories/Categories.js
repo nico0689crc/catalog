@@ -8,10 +8,6 @@ import "./Categories.css";
 const Categories = () => {
   const { data, error, isLoading } = useCategoryQuery();
 
-  for (let index = 0; index < array.length; index++) {
-    const element = array[index];
-  }
-
   if (error) {
     return (
       <div className="categories-container">
