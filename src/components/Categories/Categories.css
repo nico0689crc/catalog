@@ -7,34 +7,3 @@
 .categories__items {
   list-style: none;
 }
-.categories__item a {
-  display: inline-flex;
-  align-items: center;
-  text-decoration: none;
-}
-
-.icon-tag {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.icon-tag svg {
-  width: 1.5rem;
-  height: 1.5rem;
-}
-
-.categories__label,
-.icon-tag {
-  font-weight: 600;
-  font-size: 0.875rem;
-  color: rgba(var(--text-base-dark), 1);
-  transition: all 0.1s ease-in;
-}
-
-.categories__item a:hover .categories__label,
-.categories__item a:hover .icon-tag,
-.categories__item.active .categories__label,
-.categories__item.active .icon-tag {
-  color: rgba(var(--color-accent), 1);
-}

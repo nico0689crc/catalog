@@ -17,13 +17,22 @@ const ProductList = () => {
     include: ["categories", "tags"],
   };
 
-  if (searchParams.get("category")) {
-    params["filter"] = [
-      {
-        field: "categories.slug",
-        criteria: `contain(${searchParams.get("category")})`,
-      },
-    ];
+  if (searchParams.has("category") || searchParams.has("search")) {
+    params["filter"] = [];
+  }
+
+  if (searchParams.has("category")) {
+    params["filter"].push({
+      field: "categories.slug",
+      criteria: `contain(${searchParams.get("category")})`,
+    });
+  }
+
+  if (searchParams.has("search")) {
+    params["filter"].push({
+      field: "name",
+      criteria: `contain(${searchParams.get("search")})`,
+    });
   }
 
   const {
@@ -38,6 +47,10 @@ const ProductList = () => {
   const loadMoreHandler = () => {
     fetchNextPage();
   };
+
+  // useEffect(() => {
+  //   console.log(searchParams.get("search"));
+  // }, [searchParams]);
 
   if (error) {
     return (

@@ -75,7 +75,7 @@ export const ModalContext = createContext(intialStateContext);
 export const ModalProvider = ({ children }) => {
   const [state, dispatch] = useReducer(reducer, initialStateReducer);
 
-  const openModal = (view, payload) => {
+  const openModal = (view, payload = null) => {
     dispatch({ type: MODAL_STATUS.OPEN, view, payload });
   };
   const closeModal = () => {
