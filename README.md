@@ -35,7 +35,7 @@ For getting started with the project you have to follow the below procedure. Fir
 
 - Run the follow command to install npm packages dependencies
 <br>
-npm install
+### `npm install`
 
 Once installed the project dependencies is necessary to create a .env file in the `root` directory. You can copy the content of ".env.template" from the root directory and replace with your own data.
 
