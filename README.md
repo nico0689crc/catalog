@@ -33,10 +33,8 @@ password: 123456
 
 For getting started with the project you have to follow the below procedure. First navigate to the `root` directory. Then run below command for getting started with specific part. 
 
-- Run the follow command to install npm packages dependencies
-<br>
-
-### `npm install`
+Run the follow command to install npm packages dependencies: 
+`npm install`
 
 Once installed the project dependencies is necessary to create a .env file in the `root` directory. You can copy the content of ".env.template" from the root directory and replace with your own data.
 
@@ -48,9 +46,9 @@ REACT_APP_FRONTEND_URL=[LOCAL_IP_FRONT]
 <br>
 PORT=3500
 <br><br>
-[LOCAL_IP_BACKEND_API]:It is the IP and PORT where the Backend Api is running. Be aware that the API should be running to be consumed. For example: http://192.168.1.4:3300/api
+`[LOCAL_IP_BACKEND_API]`:It is the IP and PORT where the Backend Api is running. Be aware that the API should be running to be consumed. For example: http://192.168.1.4:3300/api
 <br>
-[LOCAL_IP_BACKEND_API]:It is the IP and PORT where this current project is running. For example: http://192.168.1.4:3500
+`[LOCAL_IP_BACKEND_API]`:It is the IP and PORT where this current project is running. For example: http://192.168.1.4:3500
 <br>
 
 ### `npm start`
