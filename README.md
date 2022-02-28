@@ -12,8 +12,8 @@ Catalog is developed in ReactJs Hooks using other packages components for ReactJ
 http://catalog.nicolasfernandez.online
 
 You can register an account with your own email or use an already created one.
-<br>
-user: dobvikes@kuedi.mv
+<br><br>
+user: dobvikes@kuedi.mv<br>
 password: 123456
 
 # Tech I Have Used
