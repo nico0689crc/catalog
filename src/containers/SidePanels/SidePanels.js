@@ -1,6 +1,8 @@
 import { useContext } from "react";
-import Categories from "../../components/Categories/Categories";
 import { SidePanelContext, VIEWS } from "../../contexts/SidePanels";
+import Categories from "../../components/Categories/Categories";
+import MainMenuSidePannel from "../MainMenu/MainMenuSidePannel";
+import UserMenuSidePannel from "../UserMenu/UserMenuSidePannel";
 import CartContainer from "../Cart/Cart";
 import Panel from "./Panel";
 
@@ -15,8 +17,8 @@ const SidePanelsContainer = () => {
       }}
     >
       {state.view === VIEWS.CART && <CartContainer />}
-      {state.view === VIEWS.USER_PROFILE && <h1>User Profile</h1>}
-      {state.view === VIEWS.MAIN_MENU && <h1>Main Menu</h1>}
+      {state.view === VIEWS.USER_PROFILE && <UserMenuSidePannel />}
+      {state.view === VIEWS.MAIN_MENU && <MainMenuSidePannel />}
       {state.view === VIEWS.CATEGORIES && <Categories />}
     </Panel>
   );
