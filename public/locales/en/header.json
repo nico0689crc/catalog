@@ -1,0 +1,10 @@
+{
+  "text_join_button": "Join",
+  "text_filter_button": "Filter",
+  "text_navbar_home": "Home",
+  "text_navbar_question": "Questions",
+  "text_navbar_contact": "Contact",
+  "text_input_search_placeholder": "Search your product from here",
+  "dropdown_item_profile": "Profile",
+  "dropdown_item_logout": "Log out"
+}
